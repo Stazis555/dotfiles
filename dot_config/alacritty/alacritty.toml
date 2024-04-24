@@ -1,0 +1,23 @@
+[shell]
+args = ["-l", "-c", "~/.cargo/bin/zellij --layout /home/stazis/.config/zellij/layouts/3_split.kdl attach --index 0 || ~/.cargo/bin/zellij --layout /home/stazis/.config/zellij/layouts/3_split.kdl"]
+program = "/bin/zsh"
+
+[font]
+size=13
+
+[font.normal]
+family="FiraCode Nerd Font Mono"
+style="Medium"
+
+[font.bold]
+family="FiraCode Nerd Font Mono"
+style="Bold"
+
+[font.italic]
+family="DejaVuSansM Nerd Font Mono"
+style="Oblique"
+
+[font.bold_italic]
+family="DejaVuSansM Nerd Font Mono"
+style="Bold Oblique"
+

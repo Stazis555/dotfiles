@@ -1,0 +1,12 @@
+keybinds {
+        locked {
+                bind "Alt h" { MoveFocusOrTab "Left"; }
+                bind "Alt j" { MoveFocus "Down"; }
+                bind "Alt k" { MoveFocus "Up"; }
+                bind "Alt l" { MoveFocusOrTab "Right"; }
+
+                bind "Alt t" { NewTab; }
+
+                bind "Alt a" { FocusNextPane; }
+        }
+}
