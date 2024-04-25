@@ -1,4 +1,7 @@
-keybinds {
+default_mode "locked";
+session_serialization false;
+
+keybinds clear-defaults=true {
         locked {
                 bind "Alt h" { MoveFocusOrTab "Left"; }
                 bind "Alt j" { MoveFocus "Down"; }
@@ -6,7 +9,19 @@ keybinds {
                 bind "Alt l" { MoveFocusOrTab "Right"; }
 
                 bind "Alt t" { NewTab; }
+                bind "Alt y" { GoToNextTab; }
+                bind "Alt 1" { GoToTab 1; }
+                bind "Alt 2" { GoToTab 2; }
+                bind "Alt 3" { GoToTab 3; }
+                bind "Alt 4" { GoToTab 4; }
 
                 bind "Alt a" { FocusNextPane; }
+
+                bind "Alt f" { ToggleFloatingPanes; }
+
+                bind "Alt v" { NewPane "Right"; }
+                bind "Alt d" { NewPane "Down"; }
+
+                bind "Alt q" { Quit; }
         }
 }
