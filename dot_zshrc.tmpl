@@ -1,6 +1,11 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+fpath+=~/.zfunc
+{{- if eq .chezmoi.os "darwin" }}
+export PATH=/Users/stazis/Library/Python/3.9/bin:/usr/local/opt/libpq/bin:$PATH/
+{{- else if eq .chezmoi.os "linux" }}
+export PATH="/home/stazis/.local/bin:$PATH"
+{{- end }}
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -103,5 +108,19 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="/home/stazis/.local/bin:$PATH"
+alias gc='git checkout -b'
+alias gpl='git pull'
+alias gcm='git checkout master && git pull'
+alias gpu='git push'
+alias gf='git fetch'
+alias gm='git commit -m'
+alias ga='git add -u'
+alias gaa='git add .'
+alias gr='git reset --soft HEAD~'
+alias grh='git reset --hard HEAD~'
+alias gpuu='git push --set-upstream origin $(git symbolic-ref --short HEAD)'
+alias gs='git status'
+alias ls='ls -lahG'
+alias tf='terraform'
+
 eval "$(zoxide init zsh)"
