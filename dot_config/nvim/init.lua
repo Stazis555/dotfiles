@@ -122,7 +122,7 @@ vim.opt.breakindent = true
 vim.opt.undofile = true
 
 -- Save files automatically
-vim.opt.autowriteall = true
+vim.opt.autowriteall = false
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
@@ -379,6 +379,7 @@ require('lazy').setup({
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'project')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -387,12 +388,12 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sp', function()
         local cwd = ''
-        cwd = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
-        -- if vim.v.shell_error ~= 0 then
-        --   -- if not git then active lsp client root
-        --   -- will get the configured root directory of the first attached lsp. You will have problems if you are using multiple lsps
-        --   cwd = vim.lsp.get_active_clients()[1].config.root_dir
-        -- end
+        cwd = vim.fn.systemlist('cd ' .. vim.fn.expand '%:h' .. ' && git rev-parse --show-toplevel')[1]
+        if vim.v.shell_error ~= 0 then
+          -- if not git then active lsp client root
+          -- will get the configured root directory of the first attached lsp. You will have problems if you are using multiple lsps
+          cwd = vim.lsp.get_active_clients()[1].config.root_dir
+        end
         builtin.find_files { cwd = cwd }
       end, { desc = '[S]earch [P]rojects' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
@@ -403,6 +404,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = '[G]it [S]tatus' })
+      vim.keymap.set('n', '<leader>p', require('telescope').extensions.project.project, { desc = '[P]rojects' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -905,6 +907,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
+  require 'custom.plugins.copilot',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
