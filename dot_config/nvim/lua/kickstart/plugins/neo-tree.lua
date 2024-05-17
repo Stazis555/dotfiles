@@ -30,6 +30,9 @@ return {
   },
   opts = {
     filesystem = {
+      filtered_items = {
+        visible = true,
+      },
       hijack_netrw_behavior = 'open_default',
       follow_current_file = {
         enabled = true,

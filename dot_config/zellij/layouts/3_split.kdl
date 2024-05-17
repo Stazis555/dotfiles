@@ -13,10 +13,10 @@ layout {
                 command "nvim";
                 args ".";
             };
-            pane split_direction="horizontal" {
-                pane name="1";
-                pane name="2";
-            };
+            //pane split_direction="horizontal" {
+            //    pane name="1";
+            //    pane name="2";
+            //};
         }
     }
 
